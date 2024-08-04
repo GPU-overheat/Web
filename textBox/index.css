@@ -1,0 +1,82 @@
+:root {
+    --bg: rgb(41, 39, 43);
+    --white: rgb(190, 190, 190);
+    --primary: rgb(50, 206, 154);
+    --placeholder: rgb(106, 102, 108);
+    --error: rgb(255, 0, 0); /* Red color for error message */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    height: 100svh;
+    display: grid;
+    place-items: center;
+    background-color: var(--bg);
+}
+
+.wrapper {
+    width: min(325px, 80vw);
+    display: grid;
+    align-items: center;
+}
+
+.wrapper > * {
+    grid-column: 1;
+    grid-row: 1;
+    font: 1.1rem futura, helvetica, sans-serif;
+    color: var(--white);
+}
+
+.wrapper input {
+    position: relative;
+    border: 1.5px solid var(--white);
+    border-radius: 0.25rem;
+    outline: none;
+    background-color: transparent;
+    color: var(--white);
+    padding: 1rem;
+    z-index: 0;
+    transition: border-color 0.5s;
+}
+
+.wrapper input:focus {
+    border-color: var(--primary);
+}
+
+.wrapper input:focus ~ span,
+.wrapper input:not(:placeholder-shown) ~ span {
+    transform: translateY(-1.8rem) scale(0.75);
+    padding: 0 0.25rem;
+    color: var(--white);
+}
+
+.wrapper span {
+    width: max-content;
+    background-color: var(--bg);
+    margin-left: 1rem;
+    color: var(--placeholder);
+    transition: transform 0.5s;
+}
+
+#error-message {
+    color: var(--error);
+    margin-top: 1rem;
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 0.9rem;
+}
+
+/* Additional CSS for valid and invalid states */
+.wrapper input.valid {
+    border-color: var(--primary);
+}
+
+.wrapper input.invalid {
+    border-color: var(--error);
+}
